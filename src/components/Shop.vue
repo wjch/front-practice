@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <p><a @click="checkCart">查看购物车</a></p>
+        <p style="text-align:right"><a @click="checkCart">查看购物车</a></p>
 <!--     -->
         <div class="hello" style="background: #E7E6FA">
 
