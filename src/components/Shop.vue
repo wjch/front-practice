@@ -1,6 +1,7 @@
 <template>
 
     <div>
+        <p style="text-align:left;margin-right: 30px"><a @click="backToshop">购物页面</a></p>
         <p style="text-align:right;margin-right: 30px"><a @click="checkCart">查看购物车</a></p>
 <!--     -->
         <div class="hello" style="background: #E7E6FA">
@@ -80,6 +81,9 @@
             },
             checkCart() {
                 this.$router.push({path: '/cart'})
+            },
+            backToshop(){
+                this.$router.push({path: '/shop'})
             }
         },
         computed: {
