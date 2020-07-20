@@ -1,7 +1,6 @@
 <template>
 
     <div>
-        <p style="text-align:left;margin-right: 30px"><a @click="backToshop">购物页面</a></p>
         <p style="text-align:right;margin-right: 30px"><a @click="checkCart">查看购物车</a></p>
 <!--     -->
         <div class="hello" style="background: #E7E6FA">
@@ -13,7 +12,7 @@
     height: 100%;">
                     </div>
                     <div class="bottom">
-                        <h4 v-text="item.title"></h4>
+                        <h4>{{item.title}}</h4>
                     </div>
                     <div style="text-align: center">
                         <button @click.stop="reduceItem(item)">-</button>{{item.onCartNum}}<button style="background: gold"  @click.stop="addToCart(item)">+</button>
@@ -36,16 +35,17 @@
         },
         watch: {
             // 如果路由有变化，会再次执行该方法
-            '$route': 'fetchData'
+            // '$route': 'fetchData'
         },
         created() {
-            this.fetchData();
+
         },
 
         methods: {
             fetchData(){
                 console.log('fetchData')
-                this.$store.dispatch('products/getAllProducts')
+                // this.$store.dispatch('products/getAllProducts')
+                this.getAllProducts();
             },
             ...mapActions('cart', [
                     'addProductToCart',
@@ -53,6 +53,7 @@
             ),
             ...mapActions('products', [
                     'incrementInventory',
+                    'getAllProducts'
                 ]
             ),
             ...mapMutations('products', [
@@ -81,10 +82,8 @@
             },
             checkCart() {
                 this.$router.push({path: '/cart'})
-            },
-            backToshop(){
-                this.$router.push({path: '/shop'})
             }
+
         },
         computed: {
             ...mapState({
@@ -96,7 +95,8 @@
             })
         },
         mounted() {
-
+            console.log('created')
+            this.fetchData();
         }
     }
 </script>

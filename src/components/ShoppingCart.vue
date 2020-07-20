@@ -1,5 +1,8 @@
 <template>
     <div class="cart" style="background: #E7E6FA">
+<!--        <div style="background: azure">-->
+<!--        <p style="text-align:right;margin-right: 30px"><a @click="backToshop">回到购物页面</a></p>-->
+<!--        </div>-->
         <a-modal v-model="visible" title="结账成功" on-ok="handleOk">
             <template slot="footer">
                 <a-button key="submit" type="primary" :loading="loading" @click="handleOk">
@@ -72,6 +75,9 @@
         methods: {
             handleOk(e){
                 this.$router.push('/');
+            },
+            backToshop(){
+                this.$router.back()
             },
             checkout(products) {
                 this.$store.dispatch('cart/checkout', products)
